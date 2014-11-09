@@ -2,6 +2,10 @@ package com.bepol.beaconNActivities;
 
 import java.util.ArrayList;
 
+import beaconTeam.successbeacon.BeaconSignal;
+import beaconTeam.successbeacon.MainActivity;
+import beaconTeam.successbeacon.MyView;
+
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.graphics.Color;
@@ -17,7 +21,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-/*한글 주석 테스트*/
+/* 한글 주석 테스트 */
 /* ListView's Adapter */
 public class BeaconInfo extends BaseAdapter {
 	private Context mContext;
@@ -32,17 +36,21 @@ public class BeaconInfo extends BaseAdapter {
 	public ImageView img;
 	public TranslateAnimation animation;
 	TextView rotateText;
+	
+	/*icon text*/
+	TextView Icontext;
+	
 	/* Distance */
 	float distance;
 	TextView distanceText;
 	
-	/* �ㅻ퉬 */
+	/* 네비 */
 	public static String Start;
 	
-	/* 湲곌린 援щ텇 */
+	/* 기기 구분 */
 	static int threshold;
 	
-	/* 蹂�닔 珥덇린��*/
+	/* 변수 초기화 */
 	public BeaconInfo(Context c, View v, View t, View t2){
 		mContext = c;
 		mSignals = new ArrayList<BeaconSignal>();
@@ -54,23 +62,23 @@ public class BeaconInfo extends BaseAdapter {
         nextX = curX;
         nextY = curY;
         String model = Build.MODEL;
-        if(model.equals("SHV-E300S"))	//�곹씗
+        if(model.equals("SHV-E300S"))	//상희
         	threshold = 40;
-        else if(model.equals("SM-G900K"))	//�μ쁺
+        else if(model.equals("SM-G900K"))	//옥영
         	threshold = 85;
-        else if(model.endsWith("LG-F260S"))	//��
+        else if(model.endsWith("LG-F260S"))	//한
         	threshold = 64;
         else
         	threshold = 56;
 	}
 	
-	/* BeconSignal 媛앹껜 異붽� */
+	/* BeconSignal 객체 추가 */
 	public void add(BeaconSignal b){
 		mSignals.add(b);
 		this.notifyDataSetChanged();
 	}
 	
-	/* 異붽���Signal 媛쒖닔 諛섑솚 */
+	/* 추가된 Signal 개수 반환 */
 	@Override
 	public int getCount() {
 		if(mSignals == null)
@@ -78,12 +86,12 @@ public class BeaconInfo extends BaseAdapter {
 		return mSignals.size();
 	}
 	
-	/* 異쒕컻吏�諛섑솚  */
+	/* 출발지 반환  */
 	public String getStart(){
 		return Start;
 	}
 
-	/* Item 諛섑솚 */
+	/* Item 반환 */
 	@Override
 	public Object getItem(int position) {
 		if(mSignals == null)
@@ -91,13 +99,13 @@ public class BeaconInfo extends BaseAdapter {
 		return mSignals.get(position);
 	}
 
-	/* ID 諛섑솚 */
+	/* ID 반환 */
 	@Override
 	public long getItemId(int position) {
 		return position;
 	}
 	
-	/* view 諛섑솚 */
+	/* view 반환 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 		TextView textView;
@@ -135,8 +143,8 @@ public class BeaconInfo extends BaseAdapter {
         	cur.setName("Gray 2 !");
         }*/
         //if rssi is bigger than -65 and different from previous beacon, must initialize the distance
-        //�쒕갚��64
-        //�곹씗 56
+        //한백이 64
+        //상희 56
         if(i==mSignals.size()&&cur.getRssi()>-threshold){
         	if(cur.getRssi()>-threshold){
 	        	if(!cur.equals(curBeacon)||curBeacon==null){
@@ -330,8 +338,8 @@ public class BeaconInfo extends BaseAdapter {
 	        else{
 	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.0f,
     					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.0f);
-		    	curX = 0.00f;
-		    	curY = 0.00f;
+		    	curX = 0.0f;
+		    	curY = 0.0f;
 		    	if(MyView.getDest().equals("4147")){
 		    		mainactivity.alertDialog.show();
 		    		MyView.setDest("");
@@ -355,7 +363,9 @@ public class BeaconInfo extends BaseAdapter {
 	
 	/* icon's rotate angle now */
 	public void moveForward(float angle){
+		
 		angle = (int)angle;
+		rotateText.setText("X:"+ curX + "Y:" + curY);
 		if(animation==null||animation.hasEnded()){
 			nextX = curX;
 			nextY = curY;
@@ -368,9 +378,9 @@ public class BeaconInfo extends BaseAdapter {
 			}else if(angle>=225&&angle<315){
 				nextX = curX - 0.026f;
 			}
-			//釉붾줉
-			if((nextX>=0.135f&&nextX<=0.95f)&&(nextY>=0.079f&&nextY<=0.8f)){ // 踰붿쐞 ��
-				if(!((nextX>=0.41f&&nextX<=0.95f)&&(nextY>=0.15f&&nextY<=0.65f)	// NOT �ㅼ뼱�ㅻ㈃ �덈릺��怨�
+			//블록
+			if((nextX>=0.135f&&nextX<=0.95f)&&(nextY>=0.079f&&nextY<=0.8f)){ // 범위 내
+				if(!((nextX>=0.41f&&nextX<=0.95f)&&(nextY>=0.15f&&nextY<=0.65f)	// NOT 들어오면 안되는 곳
 						||((nextX>=0.2f&&nextX<=0.3f)&&((nextY>=0.45f&&nextY<=0.68f)||(nextY>=0.19f&&nextY<=0.38f))))){	
 					animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,nextX,
 	    					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,nextY);
