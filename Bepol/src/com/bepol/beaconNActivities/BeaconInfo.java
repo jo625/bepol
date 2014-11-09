@@ -2,9 +2,9 @@ package com.bepol.beaconNActivities;
 
 import java.util.ArrayList;
 
-import beaconTeam.successbeacon.BeaconSignal;
-import beaconTeam.successbeacon.MainActivity;
-import beaconTeam.successbeacon.MyView;
+import com.bepol.beaconNActivities.BeaconSignal;
+import com.bepol.beaconNActivities.MainActivity;
+import com.bepol.beaconNActivities.MyView;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -21,7 +21,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-/* 한글 주석 테스트 */
+
 /* ListView's Adapter */
 public class BeaconInfo extends BaseAdapter {
 	private Context mContext;
