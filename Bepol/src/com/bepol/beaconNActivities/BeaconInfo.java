@@ -330,8 +330,8 @@ public class BeaconInfo extends BaseAdapter {
 	        else{
 	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.0f,
     					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.0f);
-		    	curX = 0.0f;
-		    	curY = 0.0f;
+		    	curX = 0.00f;
+		    	curY = 0.00f;
 		    	if(MyView.getDest().equals("4147")){
 		    		mainactivity.alertDialog.show();
 		    		MyView.setDest("");
