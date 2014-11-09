@@ -391,7 +391,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 			Intent destSettingIntent = new Intent(MainActivity.this, DestsetActivity.class);
 			
 			if(depart.equals("")){
-				StartToast = Toast.makeText(getApplicationContext(),"異쒕컻吏�� �ㅼ젙�섏� �딆븯�듬땲��, Toast.LENGTH_SHORT);
+				StartToast = Toast.makeText(getApplicationContext(),"異쒕컻吏�� �ㅼ젙�섏� �딆븯�듬땲��", Toast.LENGTH_SHORT);
 				StartToast.setGravity(Gravity.CENTER, 0, 0);
 				StartToast.show();
 				return true;
@@ -522,6 +522,10 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	float[] mGeomagnetic;
 	float[] mGravity;
 	//float[] mRot;
+	
+	public static void setDepart(String Depart){
+		depart = Depart;
+	}
 	
 	@Override
 	public void onSensorChanged(SensorEvent event) {
