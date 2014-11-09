@@ -17,7 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-/* �쒓� 二쇱꽍 �뚯뒪��*/
+/*한글 주석 테스트*/
 /* ListView's Adapter */
 public class BeaconInfo extends BaseAdapter {
 	private Context mContext;
