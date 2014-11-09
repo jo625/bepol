@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F2F2F2"
+    android:orientation="vertical" >
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="110dp"
+	    android:orientation="vertical"
+	    android:layout_margin="5dp"
+	    android:background="@android:color/white">
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:padding="5dp"
+	        >
+	        <TextView
+	            android:id="@+id/textView2"
+	            android:layout_width="65dp"
+	            android:layout_height="wrap_content"
+	            android:text="현재 위치"
+	            android:textSize="15dp"
+	            android:textColor="#4A4A4B"
+	            android:layout_marginLeft="5dp"
+	            android:layout_marginRight="5dp"/>
+	        <EditText
+	            android:id="@+id/editText1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="45dp"
+	            android:layout_alignParentTop="true"
+	            android:layout_centerHorizontal="true"
+	            android:ems="14"
+	            android:focusable="false" >
+	        </EditText>
+	    </LinearLayout>
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:padding="5dp"
+	        >
+
+	        <TextView
+	            android:id="@+id/textView1"
+	            android:layout_width="65dp"
+	            android:layout_height="40dp"
+	            android:layout_marginLeft="5dp"
+	            android:layout_marginRight="5dp"
+	            android:gravity="center_vertical"
+	            android:text="목적지"
+	            android:textSize="15dp"
+	            android:textColor="#4A4A4B" />
+
+	        <RelativeLayout 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="0dp"
+	            >
+		        <EditText
+		            android:id="@+id/destText"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:ems="14"
+		            android:focusable="true"
+		            android:hint="목적지를 입력해주세요"
+		            android:inputType="textNoSuggestions" />
+		        <ImageButton
+		            android:id="@+id/imageButton1"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignRight="@+id/destText"
+		            android:layout_alignTop="@+id/destText"
+		            android:layout_marginRight="10dp"
+		            android:layout_marginTop="10dp"
+		            android:background="@drawable/ic_selected"
+		            android:visibility="visible" />
+		   </RelativeLayout>
+	    </LinearLayout>
+	</LinearLayout>
+
+	<Button
+	    android:id="@+id/destSaveBtn"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+	    android:background="@drawable/buttonbg"
+	    android:textColor="@android:color/white"
+	    android:textStyle="bold"
+	    android:textSize="18dp"
+	    android:text="안내 시작 ➧" />
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       	android:layout_margin = "5dp"
+       	android:dividerHeight="5dp"
+       	android:divider="#F2F2F2"
+       	>
+    </ListView>
+</LinearLayout>
