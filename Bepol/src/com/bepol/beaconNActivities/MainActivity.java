@@ -6,6 +6,13 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import beaconTeam.successbeacon.BeaconInfo;
+import beaconTeam.successbeacon.BeaconSignal;
+import beaconTeam.successbeacon.DestsetActivity;
+import beaconTeam.successbeacon.MainActivity;
+import beaconTeam.successbeacon.MyView;
+import beaconTeam.successbeacon.http;
+
 import com.bepol.databases.EdgesDbOpenHelper;
 import com.bepol.databases.PoisDbOpenHelper;
 import com.getDirection.DijkstraAlgorithm;
@@ -130,6 +137,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	/* 모드, 목적지 */
 	static String MODE = "PED";
 	public static String depart = "";
+	
 	static float destX = .0f;
 	static float destY = .0f;
 
@@ -142,6 +150,9 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	public MyView navi;
 	private static int navicount=0;
 	private static int navicount2=0;
+	
+
+	
 	
 	//Dialog FinishDialog;
 	private Button btnComplete2;
@@ -373,17 +384,18 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		/*case 0:
-    	MODE = "PED";
-        break;*/
-	case 1:	//안내 종료
-		MODE = "NAVI";
-		navi.canvas2.drawColor(Color.TRANSPARENT, Mode.CLEAR);
-		navi.setStart("");
-		navi.setDest("");
-		break;
-	case 2:	//새로운 목적지 설정
-		if(!(navi.getDest().equals(""))){	//목적지가 이미 설정되어 있을 때
-				navitoast = Toast.makeText(getApplicationContext(),"寃쎈줈 �덈궡 以묒엯�덈떎", Toast.LENGTH_SHORT);
+        	MODE = "PED";
+            break;*/
+		case 1:	//안내 종료
+			MODE = "NAVI";
+			navi.canvas2.drawColor(Color.TRANSPARENT, Mode.CLEAR);
+			navi.setStart("");
+			navi.setDest("");
+			navicount = 0;
+			break;
+		case 2:	//새로운 목적지 설정
+			if(!(navi.getDest().equals(""))){	//목적지가 이미 설정되어 있을 때
+				navitoast = Toast.makeText(getApplicationContext(),"경로 안내 중입니다", Toast.LENGTH_SHORT);
 				navitoast.setGravity(Gravity.CENTER, 0, 0);
 				navitoast.show();
 				return true;
@@ -391,7 +403,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 			Intent destSettingIntent = new Intent(MainActivity.this, DestsetActivity.class);
 			
 			if(depart.equals("")){
-				StartToast = Toast.makeText(getApplicationContext(),"異쒕컻吏�� �ㅼ젙�섏� �딆븯�듬땲��", Toast.LENGTH_SHORT);
+				StartToast = Toast.makeText(getApplicationContext(),"출발지가 설정되지 않았습니다", Toast.LENGTH_SHORT);
 				StartToast.setGravity(Gravity.CENTER, 0, 0);
 				StartToast.show();
 				return true;
@@ -512,7 +524,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 		return String.valueOf(Integer.parseInt(sb.toString(),16));
 	}
 
-	public static class ViewHolder {
+	static class ViewHolder {
 		TextView deviceAddress;
 		TextView deviceRssi;
 		TextView deviceMajor;
@@ -522,10 +534,6 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	float[] mGeomagnetic;
 	float[] mGravity;
 	//float[] mRot;
-	
-	public static void setDepart(String Depart){
-		depart = Depart;
-	}
 	
 	@Override
 	public void onSensorChanged(SensorEvent event) {
@@ -616,13 +624,15 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 						if((int)prev_distance<(int)dis_weinberg){	//moved distance is more than 1m
 							mBeaconInfo.moveForward(img.getRotation());
 							prev_distance = dis_weinberg;
+							
 
+							
 							//종료안내, 비콘없는 부분//L
 							if(dest.equals("4133(기초전자실습실뒤)") ){
 								if((mBeaconInfo.getX()>=0.3378f && mBeaconInfo.getX()<=0.392f) && 
-										(mBeaconInfo.getY()>=0.631f && mBeaconInfo.getY()<=0.682f))
+										(mBeaconInfo.getY()>=0.601f && mBeaconInfo.getY()<=0.682f))
 									navicount++;
-								if(navicount>3){
+								if(navicount>2){
 									depart = "4133(기초전자실습실뒤)";
 									//navi.setStart("4133(기초전자실습실뒤)");
 									navi.setDest("");
@@ -633,7 +643,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 							//M
 							else if(dest.equals("4105(멀티미디어실습실앞)") || dest.equals("4109(모바일응용)") ){  
 								if((mBeaconInfo.getX()>=0.139f && mBeaconInfo.getX()<=0.167f) && 
-										(mBeaconInfo.getY()>=0.536f && mBeaconInfo.getY()<=0.5851f))
+										(mBeaconInfo.getY()>=0.507f && mBeaconInfo.getY()<=0.5851f))
 									navicount++;
 								if(navicount>2){
 									depart = MyView.getDest();
@@ -645,7 +655,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 							//N
 							else if(dest.equals("화장실") ){  
 								if((mBeaconInfo.getX()>=0.192f && mBeaconInfo.getX()<=0.287f) && 
-										(mBeaconInfo.getY()>=0.3959f && mBeaconInfo.getY()<=0.4291f))
+										(mBeaconInfo.getY()>=0.3759f && mBeaconInfo.getY()<=0.4191f))
 									navicount++;
 								if(navicount>2){
 									depart = "화장실";
@@ -658,7 +668,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 							//O
 							else if(dest.equals("4110") ){  
 								if((mBeaconInfo.getX()>=0.139f && mBeaconInfo.getX()<=0.167f) && 
-										(mBeaconInfo.getY()>=0.314f && mBeaconInfo.getY()<=0.3491f))
+										(mBeaconInfo.getY()>=0.29f && mBeaconInfo.getY()<=0.3491f))
 									navicount++;
 								if(navicount>1){
 									depart = "4110";
@@ -670,7 +680,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 							//P
 							else if(dest.equals("4127(전자기계실습실앞)") ){  
 								if((mBeaconInfo.getX()>=0.3378f && mBeaconInfo.getX()<=0.392f) && 
-										(mBeaconInfo.getY()>=0.250f && mBeaconInfo.getY()<=0.284f))
+										(mBeaconInfo.getY()>=0.222f && mBeaconInfo.getY()<=0.3f))
 									navicount++;
 								if(navicount>2){
 									navi.setStart("");
@@ -708,6 +718,13 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 			x[i] = x[i+1];
 
 		x[x.length-1] = y;
+		
+		
+		
+	}
+	//111111
+	public static void setDepart(String Depart){
+		depart = Depart;
 	}
 
 	/**
