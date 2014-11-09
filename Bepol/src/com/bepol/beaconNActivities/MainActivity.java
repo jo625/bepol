@@ -118,7 +118,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	private float dis_weinberg;
 	private float prev_distance;
 
-	/* 諛⑺뼢 */
+	/* 방향 */
 	private Button btnComplete;
 	Dialog calDialog;
 	private Display display;
@@ -127,13 +127,13 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	private ArrayList<Float> myOrient = new ArrayList<Float>();
 	static AlertDialog alertDialog;
 
-	/* 紐⑤뱶, 紐⑹쟻吏�*/
+	/* 모드, 목적지 */
 	static String MODE = "PED";
 	public static String depart = "";
 	static float destX = .0f;
 	static float destY = .0f;
 
-	/* �ㅻ퉬 */
+	/* 네비 */
 	private static DisplayMetrics displaymetrics;
 	private static float height;
 	private static float width;
@@ -167,7 +167,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 
 	static LinkedList<Vertex> path;
 
-	/*	�쒖옉�붾㈃	*/
+	/*	시작화면	*/
 	static int flag = 1;
 	private void SettingBLE(){	//Set Bluetooth manager and adapter 
 		final BluetoothManager bluetoothManager =
@@ -219,7 +219,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 
 		calDialog = new Dialog(MainActivity.this);
 		calDialog.setContentView(R.layout.activity_calibrate_dialog);
-		calDialog.setTitle("蹂댁젙���꾪빐 8��洹몃젮二쇱꽭��");
+		calDialog.setTitle("보정을 위해 8을 그려주세요.");
 		calDialog.getWindow().setTitleColor(Color.BLACK);
 		calDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.WHITE));
 		btnComplete = (Button)calDialog.findViewById(R.id.btnCalComp);
@@ -233,7 +233,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 		});
 		calDialog.show();
 
-		/* �ㅻ퉬 */
+		/* 네비 */
 		displaymetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 		height = displaymetrics.heightPixels;
@@ -245,9 +245,9 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 
 
 		alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-		alertDialog.setTitle("紐⑹쟻吏�뿉 �꾩갑�덉뒿�덈떎!");
-		alertDialog.setMessage("寃쎈줈 �덈궡瑜�醫낅즺�⑸땲��");
-		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "�뺤씤", new DialogInterface.OnClickListener() {
+		alertDialog.setTitle("목적지에 도착했습니다!");
+		alertDialog.setMessage("경로 안내를 종료합니다.");
+		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "확인", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				alertDialog.dismiss();
 				dest="";
@@ -360,11 +360,11 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
 		if(MODE.equals("NAVI")){
-			menu.add(0, 2, Menu.NONE, "紐⑹쟻吏��ㅼ젙");
-			menu.add(0, 1, Menu.NONE, "寃쎈줈 �덈궡 醫낅즺");
-		}else if(MODE.equals("PED")){	//蹂댄뻾��紐⑤뱶����
-			menu.add(1, 2, Menu.NONE, "紐⑹쟻吏��ㅼ젙");
-			menu.add(1, 1, Menu.NONE, "寃쎈줈 �덈궡 醫낅즺");
+			menu.add(0, 2, Menu.NONE, "목적지 설정");
+			menu.add(0, 1, Menu.NONE, "경로 안내 종료");
+		}else if(MODE.equals("PED")){	//보행자 모드일 때
+			menu.add(1, 2, Menu.NONE, "목적지 설정");
+			menu.add(1, 1, Menu.NONE, "경로 안내 종료");
 		}
 		return super.onPrepareOptionsMenu(menu);
 	}
@@ -373,16 +373,16 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		/*case 0:
-        	MODE = "PED";
-            break;*/
-		case 1:	//�덈궡 醫낅즺
-			MODE = "NAVI";
-			navi.canvas2.drawColor(Color.TRANSPARENT, Mode.CLEAR);
-			navi.setStart("");
-			navi.setDest("");
-			break;
-		case 2:	//�덈줈��紐⑹쟻吏��ㅼ젙
-			if(!(navi.getDest().equals(""))){	//紐⑹쟻吏�� �대� �ㅼ젙�섏뼱 �덉쓣 ��
+    	MODE = "PED";
+        break;*/
+	case 1:	//안내 종료
+		MODE = "NAVI";
+		navi.canvas2.drawColor(Color.TRANSPARENT, Mode.CLEAR);
+		navi.setStart("");
+		navi.setDest("");
+		break;
+	case 2:	//새로운 목적지 설정
+		if(!(navi.getDest().equals(""))){	//목적지가 이미 설정되어 있을 때
 				navitoast = Toast.makeText(getApplicationContext(),"寃쎈줈 �덈궡 以묒엯�덈떎", Toast.LENGTH_SHORT);
 				navitoast.setGravity(Gravity.CENTER, 0, 0);
 				navitoast.show();
@@ -405,7 +405,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	/* 嫄곕━瑜��ㅼ떆 �ъ빞����珥덇린�뷀븯��蹂�닔��*/
+	/* 거리를 다시 재야할 때 초기화하는 변수들 */
 	public void initValues()
 	{
 		xValue = .0;				yValue = .0;				zValue = .0;
@@ -532,7 +532,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 		float azimut;
 		// TODO Auto-generated method stub
 		if(count==0){
-			toast = Toast.makeText(getApplicationContext(),"8�먮줈 �붾뱾�댁＜�몄슂", Toast.LENGTH_SHORT);
+			toast = Toast.makeText(getApplicationContext(),"8자로 흔들어주세요", Toast.LENGTH_SHORT);
 			toast.setGravity(Gravity.CENTER, 0, 0);
 			//toast.show();
 		}
@@ -552,7 +552,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 				remapCordinateSystem();
 				float orientation[] = new float[3];
 				SensorManager.getOrientation(inputR, orientation);
-				// �뚯쟾 媛곷룄 蹂�꼍
+				// 회전 각도 변경
 				azimut = (float)(Math.toDegrees(orientation[0])+170); // orientation contains: azimut, pitch and roll
 				if(azimut<0)
 					azimut += 360;
