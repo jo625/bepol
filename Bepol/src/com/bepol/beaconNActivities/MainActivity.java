@@ -389,61 +389,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 				return true;
 			}
 			Intent destSettingIntent = new Intent(MainActivity.this, DestsetActivity.class);
-			if((mBeaconInfo.getX()>=0.0f && mBeaconInfo.getX()<=1.0f) && 
-					(mBeaconInfo.getY()>=0.0f && mBeaconInfo.getY()<=1.0f))
-			{//A
-				navicount2++;
-				if(navicount2>0){
-					depart="POI1";
-					navicount2=0;
-				}
-
-			}
-			else if((mBeaconInfo.getX()>=0.81f && mBeaconInfo.getX()<=0.91f) && 
-					(mBeaconInfo.getY()>=0.465f && mBeaconInfo.getY()<=0.52f))
-			{//B
-				navicount2++;
-				if(navicount2>0){
-					depart="1809";
-					navicount2=0;
-				}
-			}
-			else if((mBeaconInfo.getX()>=0.81f && mBeaconInfo.getX()<=0.91f) && 
-					(mBeaconInfo.getY()>=0.015f && mBeaconInfo.getY()<=0.06f))
-			{//E
-				navicount2++;
-				if(navicount2>0){
-					depart="二쇳삎嫄댁텞�ъ궗臾댁냼";
-					navicount2=0;
-				}
-			}
-			else if((mBeaconInfo.getX()>=0.043f && mBeaconInfo.getX()<=0.125f) && 
-					(mBeaconInfo.getY()>=0.863f && mBeaconInfo.getY()<=0.915f))
-			{//I
-				navicount2++;
-				if(navicount2>0){
-					depart="K LINE KOREA";
-					navicount2=0;
-				}
-			}
-			else if((mBeaconInfo.getX()>=0.043f && mBeaconInfo.getX()<=0.125f) && 
-					(mBeaconInfo.getY()>=0.465f && mBeaconInfo.getY()<=0.52f))
-			{//K
-				navicount2++;
-				if(navicount2>0){
-					depart="�ㅻ씈�명꽣�댁뀛��;
-					navicount2=0;
-				}
-			}
-			else if((mBeaconInfo.getX()>=0.043f && mBeaconInfo.getX()<=0.125f) && 
-					(mBeaconInfo.getY()>=0.021f && mBeaconInfo.getY()<=0.06f))
-			{//N
-				navicount2++;
-				if(navicount2>0){
-					depart="ABCD";
-					navicount2=0;
-				}
-			}
+			
 			if(depart.equals("")){
 				StartToast = Toast.makeText(getApplicationContext(),"異쒕컻吏�� �ㅼ젙�섏� �딆븯�듬땲��, Toast.LENGTH_SHORT);
 				StartToast.setGravity(Gravity.CENTER, 0, 0);
@@ -667,209 +613,71 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 							mBeaconInfo.moveForward(img.getRotation());
 							prev_distance = dis_weinberg;
 
-							switch(dest){
-							case "�몃뱶�곗씠��:
-							{
-								if((mBeaconInfo.getX()>=0.75f && mBeaconInfo.getX()<=0.95f) && 
-										(mBeaconInfo.getY()>=0.863f && mBeaconInfo.getY()<=0.915f))
-									navicount++;
-								if(navicount>2){
-									navi.setStart("");
-									navi.setDest("");
-									navicount=0;
-									alertDialog.show();
-
-								}
-								break;
-							}
-							case "WOORI":
-							{
-								if((mBeaconInfo.getX()>=0.75f && mBeaconInfo.getX()<=0.95f)&&
-										(mBeaconInfo.getY()>=0.63f && mBeaconInfo.getY()<=0.75f))
-									navicount++;
-								if(navicount>2){
-									navi.setStart("");
-									navi.setDest("");
-									alertDialog.show();
-									navicount=0;
-								}
-								break;
-							}
-							case "1809":
-							{
-								if((mBeaconInfo.getX()>=0.81f && mBeaconInfo.getX()<=0.91f) && 
-										(mBeaconInfo.getY()>0.465f && mBeaconInfo.getY()<=0.52f))
-									navicount++;
-
-								if(navicount>2){
-									navi.setStart("");
-									navi.setDest("");
-									alertDialog.show();
-									navicount=0;
-								}
-								break;
-							}
-							case "J&CO":
-							{
-								if((mBeaconInfo.getX()>=0.81f && mBeaconInfo.getX()<=0.91f) && 
-										(mBeaconInfo.getY()>=0.190f && mBeaconInfo.getY()<=0.31f))
-									navicount++;
-								if(navicount>1){
-									navi.setStart("");
-									navi.setDest("");
-									alertDialog.show();
-									navicount=0;
-								}
-								break;
-							}
-							case "PAJAMAS":
-							{
-								if((mBeaconInfo.getX()>=0.81f && mBeaconInfo.getX()<=0.91f) && 
-										(mBeaconInfo.getY()>=0.08f && mBeaconInfo.getY()<=0.165f))
-									navicount++;
-								if(navicount>1){
-									navi.setStart("");
-									navi.setDest("");
-									alertDialog.show();
-									navicount=0;
-								}
-								break;
-							}
-							case "二쇳삎嫄댁텞�ъ궗臾댁냼":
-							{
-								if((mBeaconInfo.getX()>=0.81f && mBeaconInfo.getX()<=0.91f) && 
-										(mBeaconInfo.getY()>=0.015f && mBeaconInfo.getY()<=0.06f))
-									navicount++;
-								if(navicount>2){
-									navi.setStart("");
-									navi.setDest("");
-									alertDialog.show();
-									navicount=0;
-								}
-								break;
-							}
-							case "�뚯쓽�ㅽ븯":
-							{
-								if((mBeaconInfo.getX()>=0.34f && mBeaconInfo.getX()<=0.525f) && 
-										(mBeaconInfo.getY()>=0.863f && mBeaconInfo.getY()<=0.915f))
-									navicount++;
-								if(navicount>1){
-									navi.setStart("");
-									navi.setDest("");
-									alertDialog.show();
-									navicount=0;
-								}
-								break;
-							}
-							case "�섎━踰좎씠��:
-							{
-								if((mBeaconInfo.getX()>=0.375f && mBeaconInfo.getX()<=0.525f) && 
-										(mBeaconInfo.getY()>=0.465f && mBeaconInfo.getY()<=0.52f))
+							//종료안내, 비콘없는 부분//L
+							if(dest.equals("4133(기초전자실습실뒤)") ){
+								if((mBeaconInfo.getX()>=0.3378f && mBeaconInfo.getX()<=0.392f) && 
+										(mBeaconInfo.getY()>=0.631f && mBeaconInfo.getY()<=0.682f))
 									navicount++;
 								if(navicount>3){
-									navi.setStart("");
+									depart = "4133(기초전자실습실뒤)";
+									//navi.setStart("4133(기초전자실습실뒤)");
 									navi.setDest("");
-									alertDialog.show();
 									navicount=0;
+									alertDialog.show();
 								}
-								break;
 							}
-							case "�뚯쓽�ㅼ긽":
-							{
-								if((mBeaconInfo.getX()>=0.3f && mBeaconInfo.getX()<=0.575f) && 
-										(mBeaconInfo.getY()>=0.021f && mBeaconInfo.getY()<=0.06f))
+							//M
+							else if(dest.equals("4105(멀티미디어실습실앞)") || dest.equals("4109(모바일응용)") ){  
+								if((mBeaconInfo.getX()>=0.139f && mBeaconInfo.getX()<=0.167f) && 
+										(mBeaconInfo.getY()>=0.536f && mBeaconInfo.getY()<=0.5851f))
+									navicount++;
+								if(navicount>2){
+									depart = MyView.getDest();
+									navi.setDest("");
+									navicount=0;
+									alertDialog.show();
+								}
+							}
+							//N
+							else if(dest.equals("화장실") ){  
+								if((mBeaconInfo.getX()>=0.192f && mBeaconInfo.getX()<=0.287f) && 
+										(mBeaconInfo.getY()>=0.3959f && mBeaconInfo.getY()<=0.4291f))
+									navicount++;
+								if(navicount>2){
+									depart = "화장실";
+									navi.setDest("");
+									navicount=0;
+									alertDialog.show();
+								}
+							}
+							
+							//O
+							else if(dest.equals("4110") ){  
+								if((mBeaconInfo.getX()>=0.139f && mBeaconInfo.getX()<=0.167f) && 
+										(mBeaconInfo.getY()>=0.314f && mBeaconInfo.getY()<=0.3491f))
 									navicount++;
 								if(navicount>1){
-									navi.setStart("");
+									depart = "4110";
 									navi.setDest("");
-									alertDialog.show();
 									navicount=0;
+									alertDialog.show();
 								}
-								break;
 							}
-							case "K LINE KOREA":
-							{
-								if((mBeaconInfo.getX()>=0.043f && mBeaconInfo.getX()<=0.125f) && 
-										(mBeaconInfo.getY()>=0.863f && mBeaconInfo.getY()<0.915f))
+							//P
+							else if(dest.equals("4127(전자기계실습실앞)") ){  
+								if((mBeaconInfo.getX()>=0.3378f && mBeaconInfo.getX()<=0.392f) && 
+										(mBeaconInfo.getY()>=0.250f && mBeaconInfo.getY()<=0.284f))
 									navicount++;
 								if(navicount>2){
 									navi.setStart("");
 									navi.setDest("");
-									alertDialog.show();
 									navicount=0;
-								}
-								break;
-							}
-							case "珥덈줉留덈（":
-							{
-								if((mBeaconInfo.getX()>=0.043f && mBeaconInfo.getX()<=0.125f) && 
-										(mBeaconInfo.getY()>=0.63f && mBeaconInfo.getY()<=0.75f))
-									navicount++;
-								if(navicount>2){
-									navi.setStart("");
-									navi.setDest("");
 									alertDialog.show();
-									navicount=0;
 								}
-								break;
 							}
-							case "�ㅻ씈�명꽣�댁뀛��:
-							{
-								if((mBeaconInfo.getX()>=0.043f && mBeaconInfo.getX()<=0.125f) && 
-										(mBeaconInfo.getY()>=0.465f && mBeaconInfo.getY()<=0.52f))
-									navicount++;
-								if(navicount>2){
-									navi.setStart("");
-									navi.setDest("");
-									//FinishDialog.show();
-									alertDialog.show();
-									navicount=0;
-								}
-								break;
-							}
-							case "1804":
-							{
-								if((mBeaconInfo.getX()>=0.043f && mBeaconInfo.getX()<=0.125f) && 
-										(mBeaconInfo.getY()>=0.213f && mBeaconInfo.getY()<=0.315f))
-									navicount++;
-								if(navicount>1){
-									navi.setStart("");
-									navi.setDest("");
-									//FinishDialog.show();
-									alertDialog.show();
-									navicount=0;
-								}
-								break;
-							}
-							case "COSTER":
-							{
-								if((mBeaconInfo.getX()>=0.043f && mBeaconInfo.getX()<=0.125f) && 
-										(mBeaconInfo.getY()>=0.08f && mBeaconInfo.getY()<=0.165f))
-									navicount++;
-								if(navicount>1){
-									navi.setStart("");
-									navi.setDest("");
-									//FinishDialog.show();
-									alertDialog.show();
-									navicount=0;
-								}
-								break;
-							}
-							case "ABCD":
-							{
-								if((mBeaconInfo.getX()>=0.043f && mBeaconInfo.getX()<=0.125f) && 
-										(mBeaconInfo.getY()>=0.021f && mBeaconInfo.getY()<=0.06f))
-									navicount++;
-								if(navicount>2){
-									navi.setStart("");
-									navi.setDest("");
-									//FinishDialog.show();
-									alertDialog.show();
-									count=0;
-								}
-								break;
-							}
-							}
+						
+							
+							
 						}
 					}
 					prev_filteredAcc = Acc_LPFiltered;
