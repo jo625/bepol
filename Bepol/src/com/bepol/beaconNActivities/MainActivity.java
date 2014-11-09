@@ -118,7 +118,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	private float dis_weinberg;
 	private float prev_distance;
 
-	/* 방향 */
+	/* 諛⑺뼢 */
 	private Button btnComplete;
 	Dialog calDialog;
 	private Display display;
@@ -127,13 +127,13 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	private ArrayList<Float> myOrient = new ArrayList<Float>();
 	static AlertDialog alertDialog;
 
-	/* 모드, 목적지 */
+	/* 紐⑤뱶, 紐⑹쟻吏�*/
 	static String MODE = "PED";
-	private String depart = "";
+	public static String depart = "";
 	static float destX = .0f;
 	static float destY = .0f;
 
-	/* 네비 */
+	/* �ㅻ퉬 */
 	private static DisplayMetrics displaymetrics;
 	private static float height;
 	private static float width;
@@ -167,7 +167,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 
 	static LinkedList<Vertex> path;
 
-	/*	시작화면	*/
+	/*	�쒖옉�붾㈃	*/
 	static int flag = 1;
 	private void SettingBLE(){	//Set Bluetooth manager and adapter 
 		final BluetoothManager bluetoothManager =
@@ -219,7 +219,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 
 		calDialog = new Dialog(MainActivity.this);
 		calDialog.setContentView(R.layout.activity_calibrate_dialog);
-		calDialog.setTitle("보정을 위해 8을 그려주세요.");
+		calDialog.setTitle("蹂댁젙���꾪빐 8��洹몃젮二쇱꽭��");
 		calDialog.getWindow().setTitleColor(Color.BLACK);
 		calDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.WHITE));
 		btnComplete = (Button)calDialog.findViewById(R.id.btnCalComp);
@@ -233,7 +233,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 		});
 		calDialog.show();
 
-		/* 네비 */
+		/* �ㅻ퉬 */
 		displaymetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 		height = displaymetrics.heightPixels;
@@ -245,9 +245,9 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 
 
 		alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-		alertDialog.setTitle("목적지에 도착했습니다!");
-		alertDialog.setMessage("경로 안내를 종료합니다.");
-		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "확인", new DialogInterface.OnClickListener() {
+		alertDialog.setTitle("紐⑹쟻吏�뿉 �꾩갑�덉뒿�덈떎!");
+		alertDialog.setMessage("寃쎈줈 �덈궡瑜�醫낅즺�⑸땲��");
+		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "�뺤씤", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				alertDialog.dismiss();
 				dest="";
@@ -360,11 +360,11 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
 		if(MODE.equals("NAVI")){
-			menu.add(0, 2, Menu.NONE, "목적지 설정");
-			menu.add(0, 1, Menu.NONE, "경로 안내 종료");
-		}else if(MODE.equals("PED")){	//보행자 모드일 때
-			menu.add(1, 2, Menu.NONE, "목적지 설정");
-			menu.add(1, 1, Menu.NONE, "경로 안내 종료");
+			menu.add(0, 2, Menu.NONE, "紐⑹쟻吏��ㅼ젙");
+			menu.add(0, 1, Menu.NONE, "寃쎈줈 �덈궡 醫낅즺");
+		}else if(MODE.equals("PED")){	//蹂댄뻾��紐⑤뱶����
+			menu.add(1, 2, Menu.NONE, "紐⑹쟻吏��ㅼ젙");
+			menu.add(1, 1, Menu.NONE, "寃쎈줈 �덈궡 醫낅즺");
 		}
 		return super.onPrepareOptionsMenu(menu);
 	}
@@ -375,15 +375,15 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 		/*case 0:
         	MODE = "PED";
             break;*/
-		case 1:	//안내 종료
+		case 1:	//�덈궡 醫낅즺
 			MODE = "NAVI";
 			navi.canvas2.drawColor(Color.TRANSPARENT, Mode.CLEAR);
 			navi.setStart("");
 			navi.setDest("");
 			break;
-		case 2:	//새로운 목적지 설정
-			if(!(navi.getDest().equals(""))){	//목적지가 이미 설정되어 있을 때
-				navitoast = Toast.makeText(getApplicationContext(),"경로 안내 중입니다", Toast.LENGTH_SHORT);
+		case 2:	//�덈줈��紐⑹쟻吏��ㅼ젙
+			if(!(navi.getDest().equals(""))){	//紐⑹쟻吏�� �대� �ㅼ젙�섏뼱 �덉쓣 ��
+				navitoast = Toast.makeText(getApplicationContext(),"寃쎈줈 �덈궡 以묒엯�덈떎", Toast.LENGTH_SHORT);
 				navitoast.setGravity(Gravity.CENTER, 0, 0);
 				navitoast.show();
 				return true;
@@ -413,7 +413,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 			{//E
 				navicount2++;
 				if(navicount2>0){
-					depart="주형건축사사무소";
+					depart="二쇳삎嫄댁텞�ъ궗臾댁냼";
 					navicount2=0;
 				}
 			}
@@ -431,7 +431,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 			{//K
 				navicount2++;
 				if(navicount2>0){
-					depart="오띠인터내셔널";
+					depart="�ㅻ씈�명꽣�댁뀛��;
 					navicount2=0;
 				}
 			}
@@ -445,7 +445,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 				}
 			}
 			if(depart.equals("")){
-				StartToast = Toast.makeText(getApplicationContext(),"출발지가 설정되지 않았습니다", Toast.LENGTH_SHORT);
+				StartToast = Toast.makeText(getApplicationContext(),"異쒕컻吏�� �ㅼ젙�섏� �딆븯�듬땲��, Toast.LENGTH_SHORT);
 				StartToast.setGravity(Gravity.CENTER, 0, 0);
 				StartToast.show();
 				return true;
@@ -459,7 +459,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	/* 거리를 다시 재야할 때 초기화하는 변수들 */
+	/* 嫄곕━瑜��ㅼ떆 �ъ빞����珥덇린�뷀븯��蹂�닔��*/
 	public void initValues()
 	{
 		xValue = .0;				yValue = .0;				zValue = .0;
@@ -582,7 +582,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 		float azimut;
 		// TODO Auto-generated method stub
 		if(count==0){
-			toast = Toast.makeText(getApplicationContext(),"8자로 흔들어주세요", Toast.LENGTH_SHORT);
+			toast = Toast.makeText(getApplicationContext(),"8�먮줈 �붾뱾�댁＜�몄슂", Toast.LENGTH_SHORT);
 			toast.setGravity(Gravity.CENTER, 0, 0);
 			//toast.show();
 		}
@@ -602,7 +602,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 				remapCordinateSystem();
 				float orientation[] = new float[3];
 				SensorManager.getOrientation(inputR, orientation);
-				// 회전 각도 변경
+				// �뚯쟾 媛곷룄 蹂�꼍
 				azimut = (float)(Math.toDegrees(orientation[0])+170); // orientation contains: azimut, pitch and roll
 				if(azimut<0)
 					azimut += 360;
@@ -668,7 +668,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 							prev_distance = dis_weinberg;
 
 							switch(dest){
-							case "노드데이타":
+							case "�몃뱶�곗씠��:
 							{
 								if((mBeaconInfo.getX()>=0.75f && mBeaconInfo.getX()<=0.95f) && 
 										(mBeaconInfo.getY()>=0.863f && mBeaconInfo.getY()<=0.915f))
@@ -735,7 +735,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 								}
 								break;
 							}
-							case "주형건축사사무소":
+							case "二쇳삎嫄댁텞�ъ궗臾댁냼":
 							{
 								if((mBeaconInfo.getX()>=0.81f && mBeaconInfo.getX()<=0.91f) && 
 										(mBeaconInfo.getY()>=0.015f && mBeaconInfo.getY()<=0.06f))
@@ -748,7 +748,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 								}
 								break;
 							}
-							case "회의실하":
+							case "�뚯쓽�ㅽ븯":
 							{
 								if((mBeaconInfo.getX()>=0.34f && mBeaconInfo.getX()<=0.525f) && 
 										(mBeaconInfo.getY()>=0.863f && mBeaconInfo.getY()<=0.915f))
@@ -761,7 +761,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 								}
 								break;
 							}
-							case "엘리베이터":
+							case "�섎━踰좎씠��:
 							{
 								if((mBeaconInfo.getX()>=0.375f && mBeaconInfo.getX()<=0.525f) && 
 										(mBeaconInfo.getY()>=0.465f && mBeaconInfo.getY()<=0.52f))
@@ -774,7 +774,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 								}
 								break;
 							}
-							case "회의실상":
+							case "�뚯쓽�ㅼ긽":
 							{
 								if((mBeaconInfo.getX()>=0.3f && mBeaconInfo.getX()<=0.575f) && 
 										(mBeaconInfo.getY()>=0.021f && mBeaconInfo.getY()<=0.06f))
@@ -800,7 +800,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 								}
 								break;
 							}
-							case "초록마루":
+							case "珥덈줉留덈（":
 							{
 								if((mBeaconInfo.getX()>=0.043f && mBeaconInfo.getX()<=0.125f) && 
 										(mBeaconInfo.getY()>=0.63f && mBeaconInfo.getY()<=0.75f))
@@ -813,7 +813,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 								}
 								break;
 							}
-							case "오띠인터내셔널":
+							case "�ㅻ씈�명꽣�댁뀛��:
 							{
 								if((mBeaconInfo.getX()>=0.043f && mBeaconInfo.getX()<=0.125f) && 
 										(mBeaconInfo.getY()>=0.465f && mBeaconInfo.getY()<=0.52f))
