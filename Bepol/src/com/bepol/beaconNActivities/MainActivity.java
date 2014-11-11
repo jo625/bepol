@@ -6,21 +6,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import beaconTeam.successbeacon.BeaconInfo;
-import beaconTeam.successbeacon.BeaconSignal;
-import beaconTeam.successbeacon.DestsetActivity;
-import beaconTeam.successbeacon.MainActivity;
-import beaconTeam.successbeacon.MyView;
-import beaconTeam.successbeacon.http;
-
-import com.bepol.databases.EdgesDbOpenHelper;
-import com.bepol.databases.PoisDbOpenHelper;
-import com.getDirection.DijkstraAlgorithm;
-import com.getDirection.Edge;
-import com.getDirection.Graph;
-import com.getDirection.Vertex;
-
-import com.bepol.R;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
@@ -38,11 +23,9 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.Menu;
@@ -50,6 +33,7 @@ import android.view.MenuItem;
 import android.view.Surface;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -58,6 +42,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bepol.R;
+import com.bepol.databases.EdgesDbOpenHelper;
+import com.bepol.databases.PoisDbOpenHelper;
+import com.getDirection.DijkstraAlgorithm;
+import com.getDirection.Edge;
+import com.getDirection.Graph;
+import com.getDirection.Vertex;
 
 
 public class MainActivity extends ListActivity implements SensorEventListener,OnClickListener{
@@ -229,8 +221,8 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 
 
 		calDialog = new Dialog(MainActivity.this);
+		calDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		calDialog.setContentView(R.layout.activity_calibrate_dialog);
-		calDialog.setTitle("보정을 위해 8을 그려주세요.");
 		calDialog.getWindow().setTitleColor(Color.BLACK);
 		calDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.WHITE));
 		btnComplete = (Button)calDialog.findViewById(R.id.btnCalComp);
