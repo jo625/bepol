@@ -1,13 +1,13 @@
 package com.getDirection;
 
-//��� Ŭ����
+//Vertex Class
 public class Vertex {
 	  final private String id;   //id
-	  final private String name; //�̸�
-	  final float x;
-	  final float y;
+	  final private String name; //name
+	  final float x;			 //Point x
+	  final float y;			 //Point y
 	  
-	  //������
+	  //생성자
 	  public Vertex(String id, String name, float x, float y) {
 	    this.id = id;
 	    this.name = name;
@@ -15,19 +15,19 @@ public class Vertex {
 	    this.y = y;
 	  }
 	  
-	  public String getId() {//id ����
+	  public String getId() {//get Id of Vertex
 	    return id;
 	  }
 
-	  public String getName() {//name ����
+	  public String getName() {//get Name of Vertex
 	    return name;
 	  }
 	  
-	  public float getX(){
+	  public float getX(){     //get Point x pixel
 		  return x;
 	  }
 	  
-	  public float getY(){
+	  public float getY(){		//get Point y pixel
 		  return y;
 	  }
 	  

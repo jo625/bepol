@@ -9,20 +9,22 @@ import java.util.List;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;*/
 
-//Dijkstra �˰���
+/* Dijkstra Test 클래스 
+ * 지워도 상관없음
+ */
 public class TestDijkstraAlgorithm {
 
-	//Nodes, Edges
+  //Nodes, Edges
   private List<Vertex> nodes;
   private List<Edge> edges;
 
   //Test
   public void testExcute() {
-	//���, ���� �迭����Ʈ�� ����
+	//Vertex, Edge에 대한 ArrayList
     nodes = new ArrayList<Vertex>();
     edges = new ArrayList<Edge>();
     
-    //��� �߰�
+    
 //    for (int i = 0; i < 12; i++) {
 //      Vertex location = new Vertex("Node_" + i, "Node_" + i);
 //      nodes.add(location);
