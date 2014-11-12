@@ -63,11 +63,11 @@ public class BeaconInfo extends BaseAdapter {
         nextY = curY;
         String model = Build.MODEL;
         if(model.equals("SHV-E300S"))	//상희
-        	threshold = 40;
+        	threshold = 58;
         else if(model.equals("SM-G900K"))	//옥영
-        	threshold = 85;
+        	threshold = 87;
         else if(model.endsWith("LG-F260S"))	//한
-        	threshold = 64;
+        	threshold = 66;  //67;
         else
         	threshold = 56;
 	}
