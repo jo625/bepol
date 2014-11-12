@@ -549,7 +549,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 			I = new float[16];
 			boolean success = SensorManager.getRotationMatrix(inputR, I, mGravity, mGeomagnetic);
 			if (success) {
-				remapCordinateSystem();
+				//remapCordinateSystem();
 				float orientation[] = new float[3];
 				SensorManager.getOrientation(inputR, orientation);
 				// 회전 각도 변경
@@ -633,7 +633,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 								}
 							}
 							//M
-							else if(dest.equals("4105(멀티미디어실습실앞)") || dest.equals("4109(모바일응용)") ){  
+							/*else if(dest.equals("4105(멀티미디어실습실앞)") || dest.equals("4109(모바일응용)") ){  
 								if((mBeaconInfo.getX()>=0.139f && mBeaconInfo.getX()<=0.167f) && 
 										(mBeaconInfo.getY()>=0.507f && mBeaconInfo.getY()<=0.5851f))
 									navicount++;
@@ -643,7 +643,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 									navicount=0;
 									alertDialog.show();
 								}
-							}
+							}*/
 							//N
 							else if(dest.equals("화장실") ){  
 								if((mBeaconInfo.getX()>=0.192f && mBeaconInfo.getX()<=0.287f) && 

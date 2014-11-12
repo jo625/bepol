@@ -335,6 +335,25 @@ public class BeaconInfo extends BaseAdapter {
 	        	}
 	        	
 	        }
+	        else if(major.equals("11")){ //대각선//0.1945 0.141
+	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.1945f,
+	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.141f);
+	        	curX = 0.1945f;
+	        	curY = 0.141f;
+	        	
+	        }
+	        else if(major.equals("12")){ //4105앞, 4109
+	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.141f,
+	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.549f);
+	        	curX = 0.141f;
+	        	curY = 0.549f;
+	        	MainActivity.setDepart("4105(멀티미디어실습실앞)");
+	        	if(MyView.getDest().equals("4105(멀티미디어실습실앞)") || (MyView.getDest().equals("4109(모바일응용)"))){
+	        		mainactivity.alertDialog.show();
+	        		MyView.setDest("");
+	        	}
+	        	
+	        }
 	        else{
 	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.0f,
     					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.0f);
@@ -391,6 +410,8 @@ public class BeaconInfo extends BaseAdapter {
 			        curY = nextY;
 				}
 			}
+			
+			mSignals.clear();
 		}
 	}
 }
