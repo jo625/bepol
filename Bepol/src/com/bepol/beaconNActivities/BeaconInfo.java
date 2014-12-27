@@ -203,73 +203,73 @@ public class BeaconInfo extends BaseAdapter {
 	
 	public void moveImage(String major, String minor){
 		if(animation==null||animation.hasEnded()){
-			if(major.equals("0")){	//POI1
+			if(major.equals("0")){	// 입구
 	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.855f,
 	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.591f);
 	        	curX = 0.855f;
 	        	curY = 0.591f;
-	        	MainActivity.setDepart("POI1");
-	        	if(MyView.getDest().equals("POI1")){
+	        	MainActivity.setDepart("입구");
+	        	if(MyView.getDest().equals("입구")){
 	        		mainactivity.alertDialog.show();
 	        		MyView.setDest("");
 	        	}
 				
 	        }
-	        else if(major.equals("1")){	//4142(대강당뒤) 4147(강의실뒤)
+	        else if(major.equals("1")){	// 종합그릇센타
 	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.347f,
 	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.591f);
 	        	curX = 0.347f;
 	        	curY = 0.591f;
-	        	MainActivity.setDepart("4142(대강당뒤)");
-	        	if((MyView.getDest().equals("4142(대강당뒤)")) || (MyView.getDest().equals("4147(강의실뒤)")) ){
+	        	MainActivity.setDepart("종합그릇센타");
+	        	if((MyView.getDest().equals("종합그릇센타"))){
 	        		mainactivity.alertDialog.show();
 	        		MyView.setDest("");
 	        	}
 	        	
 	        }
-	        else if(major.equals("2")){	//4105(멀티미디어실습실뒤) 4147(강의실앞)
+	        else if(major.equals("2")){	// 신발가게
 	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.347f,
     					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.728f);
 		    	curX = 0.347f;
 		    	curY = 0.728f;
-		    	MainActivity.setDepart("POI1");
-		    	if(MyView.getDest().equals("POI1")){
+		    	MainActivity.setDepart("신발가게");
+		    	if(MyView.getDest().equals("신발가게")){
 		    		mainactivity.alertDialog.show();
 		    		MyView.setDest("");
 		    	}
 	        	
 	        }
-	        else if(major.equals("3")){	//POI2
+	        else if(major.equals("3")){	// 화장실
 	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.083f,
 	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.728f);
 	        	curX = 0.083f;
 	        	curY = 0.728f;
-	        	MainActivity.setDepart("POI2");
-	        	if(MyView.getDest().equals("POI2")){
+	        	MainActivity.setDepart("화장실");
+	        	if(MyView.getDest().equals("화장실")){
 	        		mainactivity.alertDialog.show();
 	        		MyView.setDest("");
 	        	}
 	        	
 	        }
-	        else if(major.equals("4")){	//엘리베이터 앞
+	        else if(major.equals("4")){	// 엘리베이터 앞
 	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.083f,
     					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.866f);
 		    	curX = 0.083f;
 		    	curY = 0.866f;
-		    	MainActivity.setDepart("POI1");
-		    	if(MyView.getDest().equals("POI1")){
+		    	MainActivity.setDepart("엘리베이터");
+		    	if(MyView.getDest().equals("엘리베이터")){
 		    		mainactivity.alertDialog.show();
 		    		MyView.setDest("");
 		    	}
 	        	
 	        }
-	        else if(major.equals("5")){	//POI3
+	        else if(major.equals("5")){	// 카페베네
 	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.855f,
 	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.866f);
 	        	curX = 0.855f;
 	        	curY = 0.866f;
-	        	MainActivity.setDepart("POI3");
-	        	if(MyView.getDest().equals("POI3")){
+	        	MainActivity.setDepart("카페베네");
+	        	if(MyView.getDest().equals("카페베네")){
 	        		mainactivity.alertDialog.show();
 	        		MyView.setDest("");
 	        	}
@@ -280,7 +280,7 @@ public class BeaconInfo extends BaseAdapter {
     					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.0f);
 		    	curX = 0.0f;
 		    	curY = 0.0f;
-		    	if(MyView.getDest().equals("4147")){
+		    	if(MyView.getDest().equals("입구")){
 		    		mainactivity.alertDialog.show();
 		    		MyView.setDest("");
 		    	}

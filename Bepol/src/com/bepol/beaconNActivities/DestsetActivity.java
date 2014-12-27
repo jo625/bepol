@@ -39,7 +39,7 @@ public class DestsetActivity extends Activity implements View.OnClickListener {
 	private ListView lv;                         //목적지 리스트
 	private Button DestSetBtn;					 //목적지 설정 버튼
 	Toast starttoast;							 //Toast
-	private String departure;					 //?
+	private String departure;					 //출발지
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
