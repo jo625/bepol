@@ -553,7 +553,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 				float orientation[] = new float[3];
 				SensorManager.getOrientation(inputR, orientation);
 				// 회전 각도 변경
-				azimut = (float)(Math.toDegrees(orientation[0])+170); // orientation contains: azimut, pitch and roll
+				azimut = (float)(Math.toDegrees(orientation[0])+88); // orientation contains: azimut, pitch and roll
 				if(azimut<0)
 					azimut += 360;
 				img.setRotation(azimut);
