@@ -204,22 +204,22 @@ public class BeaconInfo extends BaseAdapter {
 	public void moveImage(String major, String minor){
 		if(animation==null||animation.hasEnded()){
 			if(major.equals("0")){	//POI1
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.589f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.728f);
-	        	curX = 0.589f;
-	        	curY = 0.728f;
+	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.855f,
+	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.591f);
+	        	curX = 0.855f;
+	        	curY = 0.591f;
 	        	MainActivity.setDepart("POI1");
 	        	if(MyView.getDest().equals("POI1")){
 	        		mainactivity.alertDialog.show();
 	        		MyView.setDest("");
 	        	}
-	        	
+				
 	        }
 	        else if(major.equals("1")){	//4142(대강당뒤) 4147(강의실뒤)
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.364f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.728f);
-	        	curX = 0.364f;
-	        	curY = 0.728f;
+	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.347f,
+	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.591f);
+	        	curX = 0.347f;
+	        	curY = 0.591f;
 	        	MainActivity.setDepart("4142(대강당뒤)");
 	        	if((MyView.getDest().equals("4142(대강당뒤)")) || (MyView.getDest().equals("4147(강의실뒤)")) ){
 	        		mainactivity.alertDialog.show();
@@ -228,22 +228,22 @@ public class BeaconInfo extends BaseAdapter {
 	        	
 	        }
 	        else if(major.equals("2")){	//4105(멀티미디어실습실뒤) 4147(강의실앞)
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.140f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.728f);
-	        	curX = 0.140f;
-	        	curY = 0.728f;
-	        	MainActivity.setDepart("4105(멀티미디어실습실뒤)");
-	        	if((MyView.getDest().equals("4105(멀티미디어실습실뒤)")) || (MyView.getDest().equals("4147(강의실앞)")) ){
-	        		mainactivity.alertDialog.show();
-	        		MyView.setDest("");
-	        	}
+	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.347f,
+    					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.728f);
+		    	curX = 0.347f;
+		    	curY = 0.728f;
+		    	MainActivity.setDepart("POI1");
+		    	if(MyView.getDest().equals("POI1")){
+		    		mainactivity.alertDialog.show();
+		    		MyView.setDest("");
+		    	}
 	        	
 	        }
 	        else if(major.equals("3")){	//POI2
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.140f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.412f);
-	        	curX = 0.140f;
-	        	curY = 0.412f;
+	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.083f,
+	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.728f);
+	        	curX = 0.083f;
+	        	curY = 0.728f;
 	        	MainActivity.setDepart("POI2");
 	        	if(MyView.getDest().equals("POI2")){
 	        		mainactivity.alertDialog.show();
@@ -251,104 +251,25 @@ public class BeaconInfo extends BaseAdapter {
 	        	}
 	        	
 	        }
-	        else if(major.equals("4")){	//4133(기초전자실험실앞) 4127(전자기계실습실뒤)
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.364f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.412f);
-	        	curX = 0.364f;
-	        	curY = 0.412f;
-	        	MainActivity.setDepart("4133(기초전자실험실앞)");
-	        	if((MyView.getDest().equals("4133(기초전자실험실앞)")) || (MyView.getDest().equals("4127(전자기계실습실뒤)")) ){
-	        		mainactivity.alertDialog.show();
-	        		MyView.setDest("");
-	        	}
+	        else if(major.equals("4")){	//엘리베이터 앞
+	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.083f,
+    					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.866f);
+		    	curX = 0.083f;
+		    	curY = 0.866f;
+		    	MainActivity.setDepart("POI1");
+		    	if(MyView.getDest().equals("POI1")){
+		    		mainactivity.alertDialog.show();
+		    		MyView.setDest("");
+		    	}
 	        	
 	        }
 	        else if(major.equals("5")){	//POI3
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.140f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.188f);
-	        	curX = 0.140f;
-	        	curY = 0.188f;
+	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.855f,
+	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.866f);
+	        	curX = 0.855f;
+	        	curY = 0.866f;
 	        	MainActivity.setDepart("POI3");
 	        	if(MyView.getDest().equals("POI3")){
-	        		mainactivity.alertDialog.show();
-	        		MyView.setDest("");
-	        	}
-	        	
-	        }
-	        else if(major.equals("6")){	//POI4
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.249f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.094f);
-	        	curX = 0.249f;
-	        	curY = 0.094f;
-	        	MainActivity.setDepart("POI4");
-	        	if(MyView.getDest().equals("POI4")){
-	        		mainactivity.alertDialog.show();
-	        		MyView.setDest("");
-	        	}
-	        	
-	        }
-	        else if(major.equals("7")){	//4113(엄기현교수연구실) 4115(게임/콘텐츠연구실) 4157(통신MDF실) 4159
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.364f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.094f);
-	        	curX = 0.364f;
-	        	curY = 0.094f;
-	        	MainActivity.setDepart("4113(엄기현교수연구실)");
-	        	if((MyView.getDest().equals("4113(엄기현교수연구실)")) || (MyView.getDest().equals("4115(게임/콘텐츠연구실)")) || (MyView.getDest().equals("4157(통신MDF실)")) || (MyView.getDest().equals("4159")) ){
-	        		mainactivity.alertDialog.show();
-	        		MyView.setDest("");
-	        	}
-	        	
-	        }
-	        else if(major.equals("8")){	//4161(종합설계실습실)
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.612f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.094f);
-	        	curX = 0.612f;
-	        	curY = 0.094f;
-	        	MainActivity.setDepart("4161(종합설계실습실)");
-	        	if(MyView.getDest().equals("4161(종합설계실습실)")){
-	        		mainactivity.alertDialog.show();
-	        		MyView.setDest("");
-	        	}
-	        	
-	        }
-	        else if(major.equals("9")){	//엘리베이터
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.827f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.094f);
-	        	curX = 0.827f;
-	        	curY = 0.094f;
-	        	MainActivity.setDepart("엘리베이터");
-	        	if(MyView.getDest().equals("엘리베이터")){
-	        		mainactivity.alertDialog.show();
-	        		MyView.setDest("");
-	        	}
-	        	
-	        }
-	        else if(major.equals("10")){ //4137(인터랙티브연구실) 4142(대강당앞)
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.818f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.728f);
-	        	curX = 0.818f;
-	        	curY = 0.728f;
-	        	MainActivity.setDepart("4137(인터랙티브연구실)");
-	        	if(MyView.getDest().equals("4137(인터랙티브연구실)") || (MyView.getDest().equals("4142(대강당앞)")) ){
-	        		mainactivity.alertDialog.show();
-	        		MyView.setDest("");
-	        	}
-	        	
-	        }
-	        else if(major.equals("11")){ //대각선//0.1945 0.141
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.1945f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.141f);
-	        	curX = 0.1945f;
-	        	curY = 0.141f;
-	        	
-	        }
-	        else if(major.equals("12")){ //4105앞, 4109
-	        	animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT,curX,Animation.RELATIVE_TO_PARENT,0.141f,
-	        					Animation.RELATIVE_TO_PARENT,curY,Animation.RELATIVE_TO_PARENT,0.549f);
-	        	curX = 0.141f;
-	        	curY = 0.549f;
-	        	MainActivity.setDepart("4105(멀티미디어실습실앞)");
-	        	if(MyView.getDest().equals("4105(멀티미디어실습실앞)") || (MyView.getDest().equals("4109(모바일응용)"))){
 	        		mainactivity.alertDialog.show();
 	        		MyView.setDest("");
 	        	}
