@@ -553,7 +553,7 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 				float orientation[] = new float[3];
 				SensorManager.getOrientation(inputR, orientation);
 				// 회전 각도 변경
-				azimut = (float)(Math.toDegrees(orientation[0])+170); // orientation contains: azimut, pitch and roll
+				azimut = (float)(Math.toDegrees(orientation[0])+88); // orientation contains: azimut, pitch and roll
 				if(azimut<0)
 					azimut += 360;
 				img.setRotation(azimut);
@@ -632,19 +632,6 @@ public class MainActivity extends ListActivity implements SensorEventListener,On
 									alertDialog.show();
 								}
 							}
-							//M
-							/*else if(dest.equals("4105(멀티미디어실습실앞)") || dest.equals("4109(모바일응용)") ){  
-								if((mBeaconInfo.getX()>=0.139f && mBeaconInfo.getX()<=0.167f) && 
-										(mBeaconInfo.getY()>=0.507f && mBeaconInfo.getY()<=0.5851f))
-									navicount++;
-								if(navicount>2){
-									depart = MyView.getDest();
-									navi.setDest("");
-									navicount=0;
-									alertDialog.show();
-								}
-							}*/
-							//N
 							else if(dest.equals("화장실") ){  
 								if((mBeaconInfo.getX()>=0.192f && mBeaconInfo.getX()<=0.287f) && 
 										(mBeaconInfo.getY()>=0.3759f && mBeaconInfo.getY()<=0.4191f))
